@@ -15,4 +15,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Shopuna.Launcher" parent="Theme.Shopuna">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
 </resources>

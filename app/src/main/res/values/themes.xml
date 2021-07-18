@@ -17,6 +17,6 @@
     
     
     <style name="Theme.Shopuna.Launcher" parent="Theme.Shopuna">
-        <item name="android:windowBackground"></item>
+        <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
 </resources>
