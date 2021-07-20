@@ -25,8 +25,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         val bundle = intent.extras
         if (bundle!=null) {
-            binding.emailField.setText(bundle!!.getString("email", ""))
-            binding.passwordField.setText(bundle!!.getString("pass", ""))
+            binding.emailField.setText(bundle.getString("email", ""))
+            binding.passwordField.setText(bundle.getString("pass", ""))
         }
     }
 

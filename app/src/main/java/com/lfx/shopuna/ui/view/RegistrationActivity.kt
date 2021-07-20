@@ -27,5 +27,7 @@ class RegistrationActivity : AppCompatActivity() {
         intent.putExtras(args)
         startActivity(intent)
     }
-    fun register(view: View) {}
+    fun register(view: View) {
+        goAuthActivity(binding.textView4)
+    }
 }
