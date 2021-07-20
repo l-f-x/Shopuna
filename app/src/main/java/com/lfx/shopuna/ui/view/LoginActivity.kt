@@ -1,9 +1,11 @@
 package com.lfx.shopuna.ui.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.lfx.shopuna.R
 import com.lfx.shopuna.data.api.AuthHelper
@@ -13,7 +15,7 @@ import com.lfx.shopuna.databinding.ActivityLoginBinding
 import com.lfx.shopuna.ui.base.ViewModelFactory
 import com.lfx.shopuna.ui.viewmodel.AuthViewModel
 
-lateinit var binding: ActivityLoginBinding
+private lateinit var binding: ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +23,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val bundle = intent.extras
+        if (bundle!=null) {
+            binding.emailField.setText(bundle!!.getString("email", ""))
+            binding.passwordField.setText(bundle!!.getString("pass", ""))
+        }
     }
 
     fun login(view: View) {
@@ -37,5 +44,12 @@ class LoginActivity : AppCompatActivity() {
         })
         viewModel.login(binding.emailField.text.toString(), binding.passwordField.text.toString())
     }
-    fun goRegisterActivity(view: View) {}
+    fun goRegisterActivity(view: View) {
+        val intent = Intent(this,RegistrationActivity::class.java)
+        val args = Bundle()
+        args.putString("email", binding.emailField.text.toString())
+        args.putString("pass", binding.passwordField.text.toString())
+        intent.putExtras(args)
+        startActivity(intent)
+    }
 }
