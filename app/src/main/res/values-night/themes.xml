@@ -6,6 +6,7 @@
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="android:textColor">@color/dark_text_color</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/dark_accent_color</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -28,5 +29,8 @@
     </style>
     <style name="Theme.Shopuna.Launcher" parent="Theme.Shopuna">
         <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+    <style name="Theme.Shopuna.Dialog">
+        <item name="android:background">@drawable/dark_dialog_background</item>
     </style>
 </resources>

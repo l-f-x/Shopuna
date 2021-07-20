@@ -11,9 +11,11 @@
     <color name="light_primary_color">#EADEFF</color>
     <color name="light_text_color">#505050</color>
     <color name="light_accent_color">#B39DDB</color>
+    <color name="light_dialog_color">#DDFAEEFF</color>
 
     <color name="dark_primary_color">#202124</color>
     <color name="dark_text_color">#DDDDDD</color>
     <color name="dark_accent_color">#4DD0E1</color>
+    <color name="dark_dialog_color">#DD303134</color>
     
 </resources>

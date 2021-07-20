@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.lfx.shopuna.R
 import com.lfx.shopuna.databinding.ActivityRegistrationBinding
 
@@ -28,6 +29,11 @@ class RegistrationActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun register(view: View) {
-        goAuthActivity(binding.textView4)
+       // goAuthActivity(binding.textView4)
+        val builder = AlertDialog.Builder(this)
+        val inflater = RegistrationActivity().layoutInflater;
+        builder.setView(inflater.inflate(R.layout.dialog_success, null))
+        builder.create()
+
     }
 }
