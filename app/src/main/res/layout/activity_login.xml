@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="?colorPrimary">
+    android:background="?colorPrimary"
+    tools:context=".LoginActivity">
 
 
     <ImageView
@@ -17,4 +17,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/wave" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.Shopuna.TextFieldLayout"
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        app:helperText="Enter your email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.15"
+        app:startIconContentDescription="Email"
+        app:startIconDrawable="@drawable/ic_mail_outline_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_field"
+            style="@style/Theme.Shopuna.TextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.Shopuna.TextFieldLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:endIconMode="password_toggle"
+        android:hint="Password"
+        app:helperText="Enter your password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:startIconContentDescription="Email"
+        app:startIconDrawable="@drawable/ic_lock_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_field"
+            style="@style/Theme.Shopuna.TextField"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
