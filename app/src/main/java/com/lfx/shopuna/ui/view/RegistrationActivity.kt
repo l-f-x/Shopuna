@@ -16,8 +16,8 @@ class RegistrationActivity : AppCompatActivity() {
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val bundle = intent.extras
-        binding.emailField.setText(bundle?.getString("email"))
-        binding.passwordField.setText(bundle?.getString("pass"))
+        binding.emailField.setText(bundle!!.getString("email",""))
+        binding.passwordField.setText(bundle!!.getString("pass",""))
     }
 
     fun goAuthActivity(view: View) {
@@ -29,8 +29,13 @@ class RegistrationActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun register(view: View) {
+       // goAuthActivity(binding.textView4)
         val builder = AlertDialog.Builder(this)
+
         builder.setView(layoutInflater.inflate(R.layout.dialog_success, null))
-        builder.create().show()
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
     }
 }
