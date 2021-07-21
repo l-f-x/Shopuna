@@ -24,8 +24,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val bundle = intent.extras
-            binding.emailField.setText(bundle?.getString("email", ""))
-            binding.passwordField.setText(bundle?.getString("pass", ""))
+            binding.emailField.setText(bundle?.getString("email"))
+            binding.passwordField.setText(bundle?.getString("pass"))
     }
 
     fun login(view: View) {
