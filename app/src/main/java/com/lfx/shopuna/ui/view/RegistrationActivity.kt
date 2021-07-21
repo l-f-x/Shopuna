@@ -29,11 +29,8 @@ class RegistrationActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun register(view: View) {
-       // goAuthActivity(binding.textView4)
         val builder = AlertDialog.Builder(this)
-        val inflater = RegistrationActivity().layoutInflater;
-        builder.setView(inflater.inflate(R.layout.dialog_success, null))
-        builder.create()
-
+        builder.setView(layoutInflater.inflate(R.layout.dialog_success, null))
+        builder.create().show()
     }
 }
