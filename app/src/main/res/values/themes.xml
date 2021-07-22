@@ -23,6 +23,7 @@
         <item name="helperTextTextColor">@color/light_accent_color</item>
         <item name="hintTextColor">@color/light_accent_color</item>
     </style>
+
     <style name="Theme.Shopuna.TextField">
         <item name="android:textColor">@color/light_text_color</item>
         <item name="android:background">#0F212121</item>
@@ -33,5 +34,8 @@
     </style>
     <style name="Theme.Shopuna.Dialog">
         <item name="android:background">@drawable/light_dialog_background</item>
+    </style>
+    <style name="Theme.Shopuna.TextViewEmailUserProfile">
+        <item name="android:textColor">@color/light_email_user_profile_color</item>
     </style>
 </resources>

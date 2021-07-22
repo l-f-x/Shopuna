@@ -30,12 +30,13 @@ class RegistrationActivity : AppCompatActivity() {
     }
     fun register(view: View) {
        // goAuthActivity(binding.textView4)
-        val builder = AlertDialog.Builder(this)
-
-        builder.setView(layoutInflater.inflate(R.layout.dialog_load, null))
-        val dialog = builder.create()
-        dialog.show()
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+//        val builder = AlertDialog.Builder(this)
+//        builder.setView(layoutInflater.inflate(R.layout.dialog_load, null))
+//        val dialog = builder.create()
+//        dialog.show()
+//        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        val intent = Intent(this,UserProfileFragment::class.java)
+        startActivity(intent)
 
     }
 }

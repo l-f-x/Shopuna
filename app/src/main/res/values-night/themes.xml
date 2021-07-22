@@ -33,4 +33,7 @@
     <style name="Theme.Shopuna.Dialog">
         <item name="android:background">@drawable/dark_dialog_background</item>
     </style>
+    <style name="Theme.Shopuna.TextViewEmailUserProfile">
+        <item name="android:textColor">@color/dark_email_user_profile_color</item>
+    </style>
 </resources>
