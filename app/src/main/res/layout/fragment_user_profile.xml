@@ -130,5 +130,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="130dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_btn"
+            android:drawableLeft="@drawable/ic_baseline_exit_to_app_24"
+            android:paddingLeft="10dp"
+            android:text=" Logout"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
