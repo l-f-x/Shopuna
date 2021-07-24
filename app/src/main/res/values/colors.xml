@@ -13,11 +13,15 @@
     <color name="light_accent_color">#B39DDB</color>
     <color name="light_dialog_color">#DDFAEEFF</color>
     <color name="light_email_user_profile_color">#747474</color>
+    <color name="light_bottom_navigation_view_color">#D3B8FC</color>
+
 
     <color name="dark_primary_color">#202124</color>
     <color name="dark_text_color">#DDDDDD</color>
     <color name="dark_accent_color">#4DD0E1</color>
     <color name="dark_dialog_color">#DD303134</color>
     <color name="dark_email_user_profile_color">#888888</color>
-    
+    <color name="dark_bottom_navigation_view_color">#303134</color>
+
+
 </resources>

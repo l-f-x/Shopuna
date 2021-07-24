@@ -15,7 +15,9 @@
 
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="Theme.Shopuna.TextFieldLayout">
@@ -23,7 +25,11 @@
         <item name="helperTextTextColor">@color/light_accent_color</item>
         <item name="hintTextColor">@color/light_accent_color</item>
     </style>
-
+    <style name="Theme.Shopuna.BottomNavigationView">
+        <item name="android:background">@color/light_bottom_navigation_view_color</item>
+        <item name="itemIconTint">@color/light_icons_color</item>
+        <item name="itemTextColor">@color/light_icons_color</item>
+    </style>
     <style name="Theme.Shopuna.TextField">
         <item name="android:textColor">@color/light_text_color</item>
         <item name="android:background">#0F212121</item>
@@ -38,4 +44,5 @@
     <style name="Theme.Shopuna.TextViewEmailUserProfile">
         <item name="android:textColor">@color/light_email_user_profile_color</item>
     </style>
+
 </resources>

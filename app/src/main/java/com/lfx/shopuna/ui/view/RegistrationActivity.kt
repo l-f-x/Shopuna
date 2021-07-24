@@ -35,7 +35,7 @@ class RegistrationActivity : AppCompatActivity() {
 //        val dialog = builder.create()
 //        dialog.show()
 //        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        val intent = Intent(this,UserProfileFragment::class.java)
+        val intent = Intent(this,MainContentActivity::class.java)
         startActivity(intent)
 
     }
