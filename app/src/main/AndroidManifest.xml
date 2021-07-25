@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopuna"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.view.MainContentActivity"></activity>
+        <activity android:name=".ui.view.ChangeUserDataActivity"></activity>
+        <activity android:name=".ui.view.MainContentActivity" />
         <activity android:name=".ui.view.RegistrationActivity" />
         <activity
             android:name=".ui.view.LoginActivity"

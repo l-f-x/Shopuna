@@ -45,4 +45,5 @@
         <item name="android:textColor">@color/light_email_user_profile_color</item>
     </style>
 
+
 </resources>
