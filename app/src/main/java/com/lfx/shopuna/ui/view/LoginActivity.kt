@@ -40,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.success.observe(this, {
             if (it) {
                 dialogHelper.showSuccessDialog("Успешная авторизация!")
+                goMainContent()
             }
         })
 
@@ -51,8 +52,13 @@ class LoginActivity : AppCompatActivity() {
         viewModel.login(binding.emailField.text.toString(), binding.passwordField.text.toString())
     }
 
+    fun goMainContent() {
+        val intent = Intent(this, MainContentActivity::class.java)
+        startActivity(intent)
+    }
+    
     fun goRegisterActivity(view: View) {
-        val intent = Intent(this,RegistrationActivity::class.java)
+        val intent = Intent(this, RegistrationActivity::class.java)
         val args = Bundle()
         args.putString("email", binding.emailField.text.toString())
         args.putString("pass", binding.passwordField.text.toString())
