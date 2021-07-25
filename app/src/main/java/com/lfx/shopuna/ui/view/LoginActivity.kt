@@ -39,21 +39,18 @@ class LoginActivity : AppCompatActivity() {
         viewModel.success.observe(this, {
             if (it) {
                 dialogHelper.showSuccessDialog("Успешная авторизация!")
-                val intent = Intent(this,MainContentActivity::class.java)
-                startActivity(intent)
             }
         })
         viewModel.errorMessage.observe(this, {
             dialogHelper.showErrorDialog(it)
         })
         viewModel.loading.observe(this, {
+            print(it)
             if (it) {
                 dialogHelper.showLoadingDialog()
             }
         })
         viewModel.login(binding.emailField.text.toString(), binding.passwordField.text.toString())
-
-
     }
 
     fun goRegisterActivity(view: View) {

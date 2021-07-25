@@ -3,8 +3,10 @@ package com.lfx.shopuna.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import com.lfx.shopuna.data.model.AuthLoginOutputModel
 import com.lfx.shopuna.data.repository.AuthRepository
+import com.lfx.shopuna.utils.Resource
 import kotlinx.coroutines.*
 
 class AuthViewModel(private val repository: AuthRepository): ViewModel() {
@@ -22,6 +24,7 @@ class AuthViewModel(private val repository: AuthRepository): ViewModel() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = repository.login(login, password)
             withContext(Dispatchers.Main) {
+                loading.value = true
                 if (response.isSuccessful && response.code() == 200) {
                     success.value = true
                     loading.value = false
@@ -32,6 +35,15 @@ class AuthViewModel(private val repository: AuthRepository): ViewModel() {
             }
         }
 
+    }
+
+    fun test(login: String, password: String) = liveData<Resource<Any>>(Dispatchers.IO) {
+        emit(Resource.loading(data = null, msg = null))
+        try {
+            emit(Resource.success(data = repository.login(login, password)))
+        } catch (exception: Exception) {
+            emit(Resource.error(exception.toString(), null))
+        }
     }
 
     fun register(login: String, real_name: String, password: String) {
