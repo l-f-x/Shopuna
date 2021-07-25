@@ -3,6 +3,7 @@ package com.lfx.shopuna.ui.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -41,10 +42,14 @@ class LoginActivity : AppCompatActivity() {
         dialogHelper.showLoadingDialog("Авторизация")
         viewModel.login(binding.emailField.text.toString(), binding.passwordField.text.toString())
             .observe(this) {
+                Log.d("TAG", "register: ${it.status}")
                 when (it.status) {
                     NetworkStatus.LOADING -> dialogHelper.showLoadingDialog("Авторизация")
-                    NetworkStatus.SUCCESS -> dialogHelper.showSuccessDialog("Учпешная авторизация")
-                    NetworkStatus.ERROR -> dialogHelper.showErrorDialog("Ошибка!")
+                    NetworkStatus.SUCCESS -> {
+                        dialogHelper.showSuccessDialog("Учпешная авторизация")
+                        goMainContent()
+                    }
+                    NetworkStatus.ERROR -> dialogHelper.showErrorDialog("Ошибка")
                 }
             }
     }

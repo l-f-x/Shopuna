@@ -12,6 +12,7 @@ import com.lfx.shopuna.databinding.ActivityRegistrationBinding
 import com.lfx.shopuna.ui.base.ViewModelFactory
 import com.lfx.shopuna.ui.viewmodel.AuthViewModel
 import com.lfx.shopuna.utils.NetworkDialogUtils
+import com.lfx.shopuna.utils.NetworkStatus
 
 @SuppressLint("StaticFieldLeak")
 private lateinit var binding: ActivityRegistrationBinding
@@ -42,21 +43,24 @@ class RegistrationActivity : AppCompatActivity() {
         val viewModel =
             ViewModelProvider(this, ViewModelFactory(authHelper)).get(AuthViewModel::class.java)
 
-        viewModel.errorMessage.observe(this) {
-            dialogHelper.showErrorDialog(it)
-        }
-        viewModel.success.observe(this, {
-            if (it) {
-                dialogHelper.showSuccessDialog("Успешная регистрация!")
-            }
-        })
 
-        dialogHelper.showLoadingDialog("Регистрация")
         viewModel.register(
             binding.emailField.text.toString(),
             binding.fullNameField.text.toString(),
             binding.passwordField.text.toString()
-        )
+        ).observe(this) {
+            when (it.status) {
+                NetworkStatus.LOADING -> {
+                    dialogHelper.showLoadingDialog("Регистрация")
+                }
+                NetworkStatus.ERROR -> {
+                    dialogHelper.showErrorDialog("Ошибка")
+                }
+                NetworkStatus.SUCCESS -> {
+                    dialogHelper.showSuccessDialog("Успешная регистрация!")
+                }
+            }
+        }
+    }
 
     }
-}
