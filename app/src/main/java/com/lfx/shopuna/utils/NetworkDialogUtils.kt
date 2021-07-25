@@ -8,17 +8,23 @@ import androidx.appcompat.app.AlertDialog
 import com.lfx.shopuna.R
 
 class NetworkDialogUtils(val context: Context, val inflater: LayoutInflater) {
-    var activeDialog: AlertDialog? = null
+    private var activeDialog: AlertDialog? = null
     fun showErrorDialog(error: String?) {
+        closeActualDialog()
         baseShowDialog(R.layout.dialog_error, error)
     }
 
     fun showSuccessDialog(message: String?) {
+        closeActualDialog()
         baseShowDialog(R.layout.dialog_success, message)
     }
 
-    fun showLoadingDialog() {
-        baseShowDialog(R.layout.dialog_load, null)
+    fun showLoadingDialog(message: String?) {
+        baseShowDialog(R.layout.dialog_load, message)
+    }
+
+    fun closeActualDialog() {
+        activeDialog?.cancel()
     }
 
     private fun baseShowDialog(dialogView: Int, message: String?) {

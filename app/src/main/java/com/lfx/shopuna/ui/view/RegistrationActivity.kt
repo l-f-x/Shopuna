@@ -41,11 +41,7 @@ class RegistrationActivity : AppCompatActivity() {
         val authHelper = AuthHelper(RetrofitBuilder.authService)
         val viewModel =
             ViewModelProvider(this, ViewModelFactory(authHelper)).get(AuthViewModel::class.java)
-        viewModel.loading.observe(this) {
-            if (it) {
-                dialogHelper.showLoadingDialog()
-            }
-        }
+
         viewModel.errorMessage.observe(this) {
             dialogHelper.showErrorDialog(it)
         }
@@ -54,10 +50,13 @@ class RegistrationActivity : AppCompatActivity() {
                 dialogHelper.showSuccessDialog("Успешная регистрация!")
             }
         })
+
+        dialogHelper.showLoadingDialog("Регистрация")
         viewModel.register(
             binding.emailField.text.toString(),
             binding.fullNameField.text.toString(),
             binding.passwordField.text.toString()
         )
+
     }
 }

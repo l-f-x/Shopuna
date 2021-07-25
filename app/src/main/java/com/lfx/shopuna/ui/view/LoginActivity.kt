@@ -36,20 +36,18 @@ class LoginActivity : AppCompatActivity() {
         val authHelper = AuthHelper(RetrofitBuilder.authService)
         val viewModel =
             ViewModelProvider(this, ViewModelFactory(authHelper)).get(AuthViewModel::class.java)
+
         viewModel.success.observe(this, {
             if (it) {
                 dialogHelper.showSuccessDialog("Успешная авторизация!")
             }
         })
+
         viewModel.errorMessage.observe(this, {
             dialogHelper.showErrorDialog(it)
         })
-        viewModel.loading.observe(this, {
-            print(it)
-            if (it) {
-                dialogHelper.showLoadingDialog()
-            }
-        })
+
+        dialogHelper.showLoadingDialog("Авторизация")
         viewModel.login(binding.emailField.text.toString(), binding.passwordField.text.toString())
     }
 
