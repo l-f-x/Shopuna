@@ -13,6 +13,7 @@ import com.lfx.shopuna.databinding.ActivityLoginBinding
 import com.lfx.shopuna.ui.base.ViewModelFactory
 import com.lfx.shopuna.ui.viewmodel.AuthViewModel
 import com.lfx.shopuna.utils.NetworkDialogUtils
+import com.lfx.shopuna.utils.NetworkStatus
 
 @SuppressLint("StaticFieldLeak")
 private lateinit var binding: ActivityLoginBinding
@@ -37,19 +38,15 @@ class LoginActivity : AppCompatActivity() {
         val viewModel =
             ViewModelProvider(this, ViewModelFactory(authHelper)).get(AuthViewModel::class.java)
 
-        viewModel.success.observe(this, {
-            if (it) {
-                dialogHelper.showSuccessDialog("Успешная авторизация!")
-                goMainContent()
-            }
-        })
-
-        viewModel.errorMessage.observe(this, {
-            dialogHelper.showErrorDialog(it)
-        })
-
         dialogHelper.showLoadingDialog("Авторизация")
         viewModel.login(binding.emailField.text.toString(), binding.passwordField.text.toString())
+            .observe(this) {
+                when (it.status) {
+                    NetworkStatus.LOADING -> dialogHelper.showLoadingDialog("Авторизация")
+                    NetworkStatus.SUCCESS -> dialogHelper.showSuccessDialog("Учпешная авторизация")
+                    NetworkStatus.ERROR -> dialogHelper.showErrorDialog("Ошибка!")
+                }
+            }
     }
 
     fun goMainContent() {
