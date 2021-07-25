@@ -23,7 +23,7 @@ class NetworkDialogUtils(val context: Context, val inflater: LayoutInflater) {
         baseShowDialog(R.layout.dialog_load, message)
     }
 
-    private fun closeActualDialog() {
+    fun closeActualDialog() {
         activeDialog?.cancel()
     }
 

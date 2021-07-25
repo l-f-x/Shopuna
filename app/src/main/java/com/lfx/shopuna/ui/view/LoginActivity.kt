@@ -31,7 +31,6 @@ class LoginActivity : AppCompatActivity() {
         binding.emailField.setText(bundle?.getString("email"))
         binding.passwordField.setText(bundle?.getString("pass"))
         dialogHelper = NetworkDialogUtils(this, layoutInflater)
-
     }
 
     fun login(view: View) {
@@ -46,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
                 when (it.status) {
                     NetworkStatus.LOADING -> dialogHelper.showLoadingDialog("Авторизация")
                     NetworkStatus.SUCCESS -> {
-                        dialogHelper.showSuccessDialog("Учпешная авторизация")
+                        dialogHelper.showSuccessDialog("Уcпешная авторизация")
                         goMainContent()
                     }
                     NetworkStatus.ERROR -> dialogHelper.showErrorDialog("Ошибка")
@@ -56,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun goMainContent() {
         val intent = Intent(this, MainContentActivity::class.java)
+        dialogHelper.closeActualDialog()
         startActivity(intent)
     }
     
