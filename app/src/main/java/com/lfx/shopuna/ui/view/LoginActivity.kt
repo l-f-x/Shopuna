@@ -26,12 +26,16 @@ private lateinit var binding: ActivityLoginBinding
 @SuppressLint("StaticFieldLeak")
 private lateinit var dialogHelper: NetworkDialogUtils
 private lateinit var prefs: SharedPreferences
+private lateinit var viewModel: AuthViewModel
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         dialogHelper = NetworkDialogUtils(this, layoutInflater)
         prefs = getSharedPreferences(USER_DATA_FILE_NAME, MODE_PRIVATE)
         checkUserAuth(prefs)
+        val authHelper = AuthHelper(RetrofitBuilder.authService)
+        viewModel =
+            ViewModelProvider(this, AuthViewModelFactory(authHelper)).get(AuthViewModel::class.java)
         setTheme(R.style.Theme_Shopuna)
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -43,10 +47,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun login(view: View) {
-        val authHelper = AuthHelper(RetrofitBuilder.authService)
-        val viewModel =
-            ViewModelProvider(this, AuthViewModelFactory(authHelper)).get(AuthViewModel::class.java)
-
         dialogHelper.showLoadingDialog("Авторизация")
         viewModel.login(binding.emailField.text.toString(), binding.passwordField.text.toString())
             .observe(this) {
@@ -95,4 +95,5 @@ class LoginActivity : AppCompatActivity() {
             apply()
         }
     }
+
 }
