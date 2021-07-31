@@ -6,11 +6,11 @@ import com.lfx.shopuna.data.api.AuthHelper
 import com.lfx.shopuna.data.repository.AuthRepository
 import com.lfx.shopuna.ui.viewmodel.AuthViewModel
 
-class ViewModelFactory(private val apiHelper: AuthHelper) : ViewModelProvider.Factory {
+class AuthViewModelFactory(private val authHelper: AuthHelper) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(AuthViewModel::class.java)) {
-            return AuthViewModel(AuthRepository(apiHelper)) as T
+            return AuthViewModel(AuthRepository(authHelper)) as T
         }
         throw IllegalArgumentException("Unknown class name")
     }

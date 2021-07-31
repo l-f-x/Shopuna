@@ -20,4 +20,5 @@ object RetrofitBuilder {
     }
 
     val authService: AuthService = getRetrofit().create(AuthService::class.java)
+    val userService: UserService = getRetrofit().create(UserService::class.java)
 }

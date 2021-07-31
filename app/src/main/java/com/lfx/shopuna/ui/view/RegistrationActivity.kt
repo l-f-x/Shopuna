@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.lfx.shopuna.data.api.AuthHelper
 import com.lfx.shopuna.data.api.RetrofitBuilder
 import com.lfx.shopuna.databinding.ActivityRegistrationBinding
-import com.lfx.shopuna.ui.base.ViewModelFactory
+import com.lfx.shopuna.ui.base.AuthViewModelFactory
 import com.lfx.shopuna.ui.viewmodel.AuthViewModel
 import com.lfx.shopuna.utils.NetworkDialogUtils
 import com.lfx.shopuna.utils.NetworkStatus
@@ -41,7 +41,7 @@ class RegistrationActivity : AppCompatActivity() {
     fun register(view: View) {
         val authHelper = AuthHelper(RetrofitBuilder.authService)
         val viewModel =
-            ViewModelProvider(this, ViewModelFactory(authHelper)).get(AuthViewModel::class.java)
+            ViewModelProvider(this, AuthViewModelFactory(authHelper)).get(AuthViewModel::class.java)
 
 
         viewModel.register(

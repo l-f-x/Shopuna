@@ -10,12 +10,12 @@ class AuthViewModel(private val repository: AuthRepository): ViewModel() {
 
 
 
-    fun login(login: String, password: String) = liveData<Resource<Any>>(Dispatchers.IO) {
+    fun login(login: String, password: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null, msg = null))
         try {
             val response = repository.login(login, password)
             if (response.code() == 200) {
-                emit(Resource.success(data = response))
+                emit(Resource.success(data = response.body()))
             } else {
                 emit(Resource.error(response.body()?.detail, null))
             }
