@@ -7,6 +7,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface UserService {
-    @POST("/user/get_self_info")
+    @POST("/users/get_self_info")
     suspend fun getSelfInfo(@Body auth: UserTokenInputModel): Response<UserSelfInfoOutputModel>
 }

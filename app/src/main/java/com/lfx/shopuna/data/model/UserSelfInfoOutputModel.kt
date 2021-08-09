@@ -8,5 +8,6 @@ data class UserSelfInfoOutputModel(
     val login: String,
     val role: String,
     val balance: Int,
-    val register_date: Date
+    val register_date: Date,
+    val detail: String?
 )

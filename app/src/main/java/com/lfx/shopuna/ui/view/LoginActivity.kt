@@ -35,7 +35,10 @@ class LoginActivity : AppCompatActivity() {
         checkUserAuth(prefs)
         val authHelper = AuthHelper(RetrofitBuilder.authService)
         viewModel =
-            ViewModelProvider(this, AuthViewModelFactory(authHelper)).get(AuthViewModel::class.java)
+                ViewModelProvider(
+                    this,
+                    AuthViewModelFactory(authHelper)
+                ).get(AuthViewModel::class.java)
         setTheme(R.style.Theme_Shopuna)
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
