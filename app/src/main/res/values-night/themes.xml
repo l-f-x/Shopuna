@@ -43,5 +43,11 @@
     <style name="Theme.Shopuna.TextViewEmailUserProfile">
         <item name="android:textColor">@color/dark_email_user_profile_color</item>
     </style>
+    <style name="Theme.Shopuna.TextViewShopMain">
+        <item name="android:textColor">@color/dark_text_color</item>
+    </style>
+    <style name="Theme.Shopuna.TextViewShopSecondary">
+        <item name="android:textColor">#aaa</item>
+    </style>
 
 </resources>

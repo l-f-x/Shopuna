@@ -15,6 +15,9 @@ import com.lfx.shopuna.ui.viewmodel.UserViewModel
 import com.lfx.shopuna.utils.NetworkStatus
 import com.lfx.shopuna.utils.TOKEN
 import com.lfx.shopuna.utils.USER_DATA_FILE_NAME
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 
 private var _binding: FragmentUserProfileBinding? = null
@@ -34,7 +37,6 @@ class UserProfileFragment : Fragment() {
                     binding.tvNameProfile.text = it.data?.real_name
                     binding.tvBalanceProfile.text = it.data?.balance.toString()
                     binding.tvEmailProfile.text = it.data?.login
-                    //TODO убрать говнокод и создать билдер
                     val test =
                         "${BASE_URL}users/selected_avatar/${it.data?.id}?token=${viewModel.token.value}"
                     binding.imgvUserProfile.load(test)
@@ -46,6 +48,11 @@ class UserProfileFragment : Fragment() {
             }
 
         })
+
+
+
+
+
 
 
         binding.btnLogout.setOnClickListener {
@@ -63,6 +70,19 @@ class UserProfileFragment : Fragment() {
         }
         return view
 
+    }
+    fun plural_days(n : Int): String{
+        var p =0
+        val days:Array<String> = arrayOf("день", "дня", "дней")
+
+        if(n % 10 == 1 && n % 100 != 11)
+            p = 0
+        else if (2 <= n % 10 && n%10 <= 4 && (n % 100 < 10 || n % 100 >= 20))
+            p = 1
+        else
+            p = 2
+
+        return "$n ${days[p]}"
     }
 
 
