@@ -12,6 +12,7 @@ import coil.load
 import com.lfx.shopuna.data.api.RetrofitBuilder.BASE_URL
 import com.lfx.shopuna.databinding.FragmentUserProfileBinding
 import com.lfx.shopuna.ui.viewmodel.UserViewModel
+import com.lfx.shopuna.utils.Helper
 import com.lfx.shopuna.utils.NetworkStatus
 import com.lfx.shopuna.utils.TOKEN
 import com.lfx.shopuna.utils.USER_DATA_FILE_NAME
@@ -37,9 +38,7 @@ class UserProfileFragment : Fragment() {
                     binding.tvNameProfile.text = it.data?.real_name
                     binding.tvBalanceProfile.text = it.data?.balance.toString()
                     binding.tvEmailProfile.text = it.data?.login
-                    val test =
-                        "${BASE_URL}users/selected_avatar/${it.data?.id}?token=${viewModel.token.value}"
-                    binding.imgvUserProfile.load(test)
+                    binding.imgvUserProfile.load(Helper().getImageSourceLinkById(it.data?.id,viewModel.token.value))
                 }
                 NetworkStatus.LOADING -> {
                 }

@@ -46,17 +46,18 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvShop"
-            tools:listitem="@layout/shop_item"
-            tools:itemCount="10"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:paddingTop="0dp"
             android:paddingBottom="15dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSearch" />
+            app:layout_constraintTop_toBottomOf="@+id/etSearch"
+            app:spanCount="2"
+            tools:itemCount="10"
+            tools:listitem="@layout/shop_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
