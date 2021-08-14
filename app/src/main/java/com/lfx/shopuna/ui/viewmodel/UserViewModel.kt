@@ -15,11 +15,24 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         emit(Resource.loading(data = null, msg = null))
         try {
             val response = repository.get_self_info(token.value!!)
-            val amog = "us"
             if (response.code() == 200) {
                 emit(Resource.success(data = response.body()))
             } else {
                 emit(Resource.error(response.body()?.detail, null))
+            }
+        } catch (exception: Exception) {
+            emit(Resource.error(exception.toString(), null))
+        }
+    }
+
+    fun updateRealName(realname: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null, msg = null))
+        try {
+            val response = repository.update_realname(token.value!!, realname)
+            if (response.code() == 200) {
+                emit(Resource.success(data = response.body()))
+            } else {
+                emit(Resource.error(response.errorBody().toString(), null))
             }
         } catch (exception: Exception) {
             emit(Resource.error(exception.toString(), null))

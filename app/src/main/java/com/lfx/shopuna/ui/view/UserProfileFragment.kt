@@ -50,7 +50,6 @@ class UserProfileFragment : Fragment() {
                             binding.tvEmailProfile.visibility =View.VISIBLE
                             binding.constraintLayout.visibility =View.VISIBLE
                             binding.tvStandingProfile.visibility =View.VISIBLE
-
                     }
 
                 NetworkStatus.LOADING -> {
@@ -77,7 +76,13 @@ class UserProfileFragment : Fragment() {
             activity?.finish()
         }
         binding.btnChangeUserProfile.setOnClickListener {
+            val token = viewModel.token.value
             val intent = Intent(activity?.applicationContext, ChangeUserDataActivity::class.java)
+            val args = Bundle()
+            args.putString("token", token)
+            args.putString("name", binding.tvNameProfile.text.toString())
+            args.putString("email", binding.tvNameProfile.text.toString())
+            intent.putExtras(args)
             startActivity(intent)
         }
         return view
