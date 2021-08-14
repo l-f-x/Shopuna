@@ -23,5 +23,8 @@
     <color name="dark_email_user_profile_color">#888888</color>
     <color name="dark_bottom_navigation_view_color">#303134</color>
 
+    <color name="colorShimmer">#E4E2E2</color>
+    <color name="colorBackgroud">#fff</color>
+
 
 </resources>

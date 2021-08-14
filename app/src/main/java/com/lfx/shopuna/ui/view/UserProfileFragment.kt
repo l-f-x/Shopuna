@@ -3,12 +3,14 @@ package com.lfx.shopuna.ui.view
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import coil.load
+import com.lfx.shopuna.R
 import com.lfx.shopuna.data.api.RetrofitBuilder.BASE_URL
 import com.lfx.shopuna.databinding.FragmentUserProfileBinding
 import com.lfx.shopuna.ui.viewmodel.UserViewModel
@@ -31,15 +33,26 @@ class UserProfileFragment : Fragment() {
     ): View {
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         val view = binding.root
-
         viewModel.getSelfInfo().observe(viewLifecycleOwner, {
             when (it.status) {
                 NetworkStatus.SUCCESS -> {
-                    binding.tvNameProfile.text = it.data?.real_name
-                    binding.tvBalanceProfile.text = it.data?.balance.toString()
-                    binding.tvEmailProfile.text = it.data?.login
-                    binding.imgvUserProfile.load(Helper().getImageSourceLinkById(it.data?.id,viewModel.token.value))
-                }
+                            binding.tvNameProfile.text = it.data?.real_name
+                            binding.tvBalanceProfile.text = it.data?.balance.toString()
+                            binding.tvEmailProfile.text = it.data?.login
+                            binding.imgvUserProfile.load(Helper().getImageSourceLinkById(it.data?.id,viewModel.token.value))
+                            binding.tvStandingProfile.text = "С нами с ${it.data?.register_date}"
+                            binding.shimmerUserInfo.stopShimmer()
+                            binding.shimmerUserInfo.hideShimmer()
+
+                            binding.shimmerUserInfo.visibility =View.GONE
+                            binding.cardView.visibility =View.VISIBLE
+                            binding.tvNameProfile.visibility =View.VISIBLE
+                            binding.tvEmailProfile.visibility =View.VISIBLE
+                            binding.constraintLayout.visibility =View.VISIBLE
+                            binding.tvStandingProfile.visibility =View.VISIBLE
+
+                    }
+
                 NetworkStatus.LOADING -> {
                 }
                 NetworkStatus.ERROR -> {
