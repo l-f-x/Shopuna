@@ -11,7 +11,7 @@ import com.lfx.shopuna.R
 import com.lfx.shopuna.data.model.ProductGetCartOutputModel
 import com.lfx.shopuna.utils.Helper
 
-class CartRecyclerViewAdapter(private val dataSet: Array<ProductGetCartOutputModel>, private val token: String) :
+class CartRecyclerViewAdapter(private val dataSet: List<ProductGetCartOutputModel>, private val token: String) :
     RecyclerView.Adapter<CartRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

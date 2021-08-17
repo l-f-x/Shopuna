@@ -44,12 +44,12 @@ class UserProfileFragment : Fragment() {
                             binding.shimmerUserInfo.stopShimmer()
                             binding.shimmerUserInfo.hideShimmer()
 
-                            binding.shimmerUserInfo.visibility =View.GONE
-                            binding.cardView.visibility =View.VISIBLE
-                            binding.tvNameProfile.visibility =View.VISIBLE
-                            binding.tvEmailProfile.visibility =View.VISIBLE
-                            binding.constraintLayout.visibility =View.VISIBLE
-                            binding.tvStandingProfile.visibility =View.VISIBLE
+                            binding.shimmerUserInfo.visibility = View.GONE
+                            binding.cardView.visibility = View.VISIBLE
+                            binding.tvNameProfile.visibility = View.VISIBLE
+                            binding.tvEmailProfile.visibility = View.VISIBLE
+                            binding.constraintLayout.visibility = View.VISIBLE
+                            binding.tvStandingProfile.visibility = View.VISIBLE
                     }
 
                 NetworkStatus.LOADING -> {
