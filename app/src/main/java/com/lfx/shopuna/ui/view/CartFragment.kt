@@ -1,16 +1,19 @@
 package com.lfx.shopuna.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.lfx.shopuna.databinding.FragmentCartBinding
 import com.lfx.shopuna.ui.base.controllers.CartRecyclerViewAdapter
+import com.lfx.shopuna.ui.base.onClickInterface.CartOnClickListener
 import com.lfx.shopuna.ui.viewmodel.ProductViewModel
 import com.lfx.shopuna.utils.NetworkStatus
 
@@ -40,7 +43,28 @@ class CardFragment : Fragment() {
         viewModel.cart().observe(viewLifecycleOwner){
             when(it.status){
                 NetworkStatus.SUCCESS -> {
-                    recyclerView.adapter = CartRecyclerViewAdapter(it?.data!!, viewModel.token.value!!)
+                    recyclerView.adapter = CartRecyclerViewAdapter(it?.data!!, viewModel.token.value!!, object: CartOnClickListener{
+                        override fun onClicked(
+                            id: Int,
+                            name: String,
+                            description: String,
+                            weight: String,
+                            price: String,
+                            token: String
+                        ) {
+                            val intent = Intent(activity?.applicationContext, ProductInfoActivity::class.java)
+                            val args = Bundle()
+                            args.putString("token", token)
+                            args.putInt("id", id)
+                            args.putString("name", name)
+                            args.putString("description", description)
+                            args.putString("weight", weight)
+                            args.putString("price", price)
+                            intent.putExtras(args)
+                            startActivity(intent)
+                        }
+
+                    })
                 }
                 NetworkStatus.ERROR -> {
                     Snackbar.make(view,"Мы приносим свои извинение, серверс не работает. Мы постараемяс исправить это в ближайшее время",Snackbar.LENGTH_SHORT).show()

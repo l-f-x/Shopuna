@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@drawable/bg_search">
+        android:background="@drawable/bg_search"
+        android:id="@+id/clCartItem">
 
         <ImageView
             android:id="@+id/imgvCart"
@@ -114,6 +115,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:text="10"
+            android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bntPlusCartItem"
