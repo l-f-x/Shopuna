@@ -156,7 +156,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-            <include layout="@layout/shimmer_layout" />
+            <include layout="@layout/shimmer_user_profile_layout" />
         </com.facebook.shimmer.ShimmerFrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

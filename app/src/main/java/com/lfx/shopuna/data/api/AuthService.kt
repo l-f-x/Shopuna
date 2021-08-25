@@ -13,5 +13,6 @@ interface AuthService {
     suspend fun login(@Body credentials: AuthLoginInputModel): Response<AuthLoginOutputModel>
 
     @POST("/auth/register")
-    suspend fun register(@Body data: AuthRegisterInputModel): Response<AuthRegisterOutputModel>
+    suspend fun register(
+        @Body data: AuthRegisterInputModel): Response<AuthRegisterOutputModel>
 }

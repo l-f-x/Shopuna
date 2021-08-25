@@ -27,7 +27,7 @@ private var _binding: FragmentCartBinding? = null
 private val binding get() = _binding!!
 class CardFragment : Fragment() {
 
-    val viewModel: ProductViewModel by activityViewModels()
+    private val viewModel: ProductViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +43,7 @@ class CardFragment : Fragment() {
         viewModel.cart().observe(viewLifecycleOwner){
             when(it.status){
                 NetworkStatus.SUCCESS -> {
+
                     recyclerView.adapter = CartRecyclerViewAdapter(it?.data!!, viewModel.token.value!!, object: CartOnClickListener{
                         override fun onClicked(
                             id: Int,
@@ -65,9 +66,13 @@ class CardFragment : Fragment() {
                         }
 
                     })
+                    binding.shimmerCart.stopShimmer()
+                    binding.shimmerCart.hideShimmer()
+                    binding.shimmerCart.visibility = View.GONE
+                    binding.rvCart.visibility = View.VISIBLE
                 }
                 NetworkStatus.ERROR -> {
-                    Snackbar.make(view,"Мы приносим свои извинение, серверс не работает. Мы постараемяс исправить это в ближайшее время",Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(view,"Мы приносим свои извинения, сервер не работает. Мы постараемся исправить это в ближайшее время",Snackbar.LENGTH_SHORT).show()
                 }
                 NetworkStatus.LOADING -> {
 

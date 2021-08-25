@@ -8,4 +8,6 @@ class ProductRepository(val helper: ProductHelper) {
 
     suspend fun get_cart(token: String) =
         helper.get_cart(token)
+    suspend fun add_to_cart(token: String, id: Int, count: Int) =
+        helper.add_to_cart(token,id,count)
 }

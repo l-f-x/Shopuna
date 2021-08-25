@@ -27,4 +27,18 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
             emit(Resource.error(exception.toString(), null))
         }
     }
+
+    fun add_to_cart(id: Int, count: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null, msg = null))
+        try {
+            val response = repository.add_to_cart(token.value!!,id,count)
+            if (response.code() == 200) {
+                emit(Resource.success(data = response.body()))
+            } else {
+                emit(Resource.error(response.errorBody().toString(), null))
+            }
+        } catch (exception: Exception) {
+            emit(Resource.error(exception.toString(), null))
+        }
+    }
 }

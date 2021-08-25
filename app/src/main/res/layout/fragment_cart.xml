@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.CardFragment"
     android:fitsSystemWindows="true"
-    android:background="?colorPrimary">
+    android:background="?colorPrimary"
+    android:id="@+id/cartFrameLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,7 +36,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             tools:itemCount="10"
-            tools:listitem="@layout/cart_item" />
+            tools:listitem="@layout/cart_item"
+            android:visibility="gone"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerCart"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/shimmer_cart_item_layout" />
+                <include layout="@layout/shimmer_cart_item_layout" />
+                <include layout="@layout/shimmer_cart_item_layout" />
+                <include layout="@layout/shimmer_cart_item_layout" />
+                <include layout="@layout/shimmer_cart_item_layout" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

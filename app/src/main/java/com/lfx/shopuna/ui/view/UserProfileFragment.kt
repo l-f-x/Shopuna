@@ -41,9 +41,9 @@ class UserProfileFragment : Fragment() {
                             binding.tvEmailProfile.text = it.data?.login
                             binding.imgvUserProfile.load(Helper().getImageSourceLinkById(it.data?.id,viewModel.token.value))
                             binding.tvStandingProfile.text = "С нами с ${it.data?.register_date}"
+
                             binding.shimmerUserInfo.stopShimmer()
                             binding.shimmerUserInfo.hideShimmer()
-
                             binding.shimmerUserInfo.visibility = View.GONE
                             binding.cardView.visibility = View.VISIBLE
                             binding.tvNameProfile.visibility = View.VISIBLE

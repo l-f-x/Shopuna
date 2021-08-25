@@ -63,7 +63,7 @@ class CartRecyclerViewAdapter(private val dataSet: List<ProductGetCartOutputMode
             price = "${dataSet[position].product.product_price.toString()} Р"
         }
 
-        viewHolder.imgv.load(Helper().getImageSourceLinkById(dataSet[position].product.id, token))
+        viewHolder.imgv.load(Helper().getImageSourceProductLinkById(dataSet[position].product.id, token))
         viewHolder.name.text = name
         viewHolder.desc.text = desc
         viewHolder.weight.text = weight
