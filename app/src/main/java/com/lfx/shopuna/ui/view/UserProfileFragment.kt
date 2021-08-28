@@ -36,15 +36,16 @@ class UserProfileFragment : Fragment() {
         viewModel.getSelfInfo().observe(viewLifecycleOwner, {
             when (it.status) {
                 NetworkStatus.SUCCESS -> {
+                            binding.imgvUserProfile.load(Helper().getImageSourceLinkById(it.data?.id,viewModel.token.value))
                             binding.tvNameProfile.text = it.data?.real_name
                             binding.tvBalanceProfile.text = it.data?.balance.toString()
                             binding.tvEmailProfile.text = it.data?.login
-                            binding.imgvUserProfile.load(Helper().getImageSourceLinkById(it.data?.id,viewModel.token.value))
                             binding.tvStandingProfile.text = "С нами с ${it.data?.register_date}"
 
                             binding.shimmerUserInfo.stopShimmer()
                             binding.shimmerUserInfo.hideShimmer()
                             binding.shimmerUserInfo.visibility = View.GONE
+
                             binding.cardView.visibility = View.VISIBLE
                             binding.tvNameProfile.visibility = View.VISIBLE
                             binding.tvEmailProfile.visibility = View.VISIBLE

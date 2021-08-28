@@ -3,6 +3,7 @@ package com.lfx.shopuna.ui.base.controllers
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +17,9 @@ import com.lfx.shopuna.utils.Helper
 class CartRecyclerViewAdapter(private val dataSet: List<ProductGetCartOutputModel>, private val token: String, private val onClickListener: CartOnClickListener) :
     RecyclerView.Adapter<CartRecyclerViewAdapter.ViewHolder>() {
 
+
+
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imgv: ImageView
         val name: TextView
@@ -24,7 +28,9 @@ class CartRecyclerViewAdapter(private val dataSet: List<ProductGetCartOutputMode
         val price: TextView
         val counter: TextView
         val item: ConstraintLayout
-
+        val plus: ImageView
+        val minus: ImageView
+        val delete: ImageButton
 
         init {
             // Define click listener for the ViewHolder's View.
@@ -35,6 +41,9 @@ class CartRecyclerViewAdapter(private val dataSet: List<ProductGetCartOutputMode
             price = view.findViewById(R.id.tvPriceCart)
             counter = view.findViewById(R.id.tvCounterCart)
             item = view.findViewById(R.id.clCartItem)
+            plus = view.findViewById(R.id.bntPlusCartItem)
+            minus = view.findViewById(R.id.btnMinusCartItem)
+            delete = view.findViewById(R.id.deleteCartItem)
         }
     }
 
@@ -80,10 +89,23 @@ class CartRecyclerViewAdapter(private val dataSet: List<ProductGetCartOutputMode
         viewHolder.item.setOnClickListener{
             onClickListener.onClicked(id, name, desc, weight,price,token)
         }
+        viewHolder.plus.setOnClickListener {
+            onClickListener.onPlusCliked(id)
+        }
+        viewHolder.minus.setOnClickListener {
+            onClickListener.onMinusCliked(id, counter.toInt())
+        }
+        viewHolder.delete.setOnClickListener{
+            onClickListener.onDeleteCliked(id,counter.toInt())
+        }
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
+
+    fun updateItem(position: Int){
+        this.notifyItemChanged(position)
+    }
 
 }

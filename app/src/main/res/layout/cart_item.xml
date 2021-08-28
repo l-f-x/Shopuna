@@ -96,8 +96,8 @@
 
         <ImageView
             android:id="@+id/btnMinusCartItem"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_counter"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -110,13 +110,11 @@
         <TextView
             android:id="@+id/tvCounterCart"
             android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_height="27dp"
             android:layout_marginBottom="8dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
             android:text="100"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bntPlusCartItem"
             app:layout_constraintHorizontal_bias="0.5"
@@ -124,8 +122,8 @@
 
         <ImageView
             android:id="@+id/bntPlusCartItem"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/bg_counter"
             app:layout_constraintBottom_toBottomOf="parent"
